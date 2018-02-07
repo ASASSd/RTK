@@ -1,36 +1,32 @@
-                                                                                                                                                                             #include <SoftwareSerial.h>
-#include <Servo.h>
+#include <SoftwareSerial.h>
 SoftwareSerial bluetooth(52, 53);
-Servo claw;
-int IN1_1 = 8; //правый задний вперед
-int IN2_1 = 9; //правый задний назад
-int IN3_1 = 10; //правый передний вперед
-int IN4_1 = 11; //правый передний назад
-int IN1_2 = 47; //левый задний вперед
-int IN2_2 = 45; //левый задний назад
-int IN3_2 = 43; //левый передний вперед
-int IN4_2 = 41; //левый передний назад
-int IN3_3 = 25;
-int IN4_3 = 51;
+int IN1_1 = 1; //правый задний вперед
+int IN2_1 = 2; //правый задний назад
+int IN3_1 = 4; //правый передний вперед
+int IN4_1 = 7; //правый передний назад
+int IN1_2 = 8; //левый задний вперед
+int IN2_2 = 12; //левый задний назад
+int IN3_2 = 13; //левый передний вперед
+int IN4_2 = 14; //левый передний назад
 int i;
-int pir1 = 30;
-int pir2 = 31;
-int spd1_1 = 4;
+int spd1_1 = 3;
 int spd2_1 = 5;
 int spd1_2 = 6;
-int spd2_2 = 7;
+int spd2_2 = 9;
 char msg;
 int angle = 90;
 
 void setup() {
   //Serial.begin(115200);
   bluetooth.begin(9600);
-  for (i = 41; i <= 47; i++) {
-
-    pinMode(i, OUTPUT);
-
-  }
-  claw.attach(49);
+  pinMode(IN1_1, OUTPUT);
+  pinMode(IN2_1, OUTPUT);
+  pinMode(IN3_1, OUTPUT);
+  pinMode(IN4_1, OUTPUT);
+  pinMode(IN1_2, OUTPUT);
+  pinMode(IN2_2, OUTPUT);
+  pinMode(IN3_2, OUTPUT);
+  pinMode(IN4_2, OUTPUT);
   digitalWrite(IN1_1, LOW);
   digitalWrite(IN2_1, LOW);
   digitalWrite(IN3_1, LOW);
@@ -39,18 +35,14 @@ void setup() {
   digitalWrite(IN2_2, LOW);
   digitalWrite(IN3_2, LOW);
   digitalWrite(IN4_2, LOW);
-  pinMode(IN3_3, OUTPUT);
-  pinMode(IN4_3, OUTPUT);
-  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
-  pinMode(7, OUTPUT);
+  pinMode(9, OUTPUT);
   analogWrite(spd1_1, 100);
   analogWrite(spd1_2, 100);
   analogWrite(spd2_1, 100);
   analogWrite(spd2_2, 100);
-  digitalWrite(IN3_3, LOW);
-  digitalWrite(IN4_3, LOW);
 }
 
 void forward() {
@@ -109,22 +101,6 @@ void right() {
 
 }
 
-void clawcompress(){
-  digitalWrite(IN3_3, HIGH);
-  digitalWrite(IN4_3, LOW);
-  delay(45);
-  digitalWrite(IN3_3, LOW);
-  digitalWrite(IN4_3, LOW);
-}
-
-void clawdecompress(){
-  digitalWrite(IN3_3, LOW);
-  digitalWrite(IN4_3, HIGH);
-  delay(45);
-  digitalWrite(IN4_3, LOW);
-  digitalWrite(IN3_3, LOW);
-}
-
 void loop() {
 
   if (bluetooth.available()) {
@@ -161,34 +137,6 @@ void loop() {
     if (msg == 'L') {
 
       right();
-
-    }
-
-    if (msg == 'G') {
-
-      claw.write(angle);
-      angle = angle + 10;
-
-    }
-
-    if (msg == 'I') {
-
-      claw.write(angle);
-      angle = angle - 10;
-
-    }
-
-    if (msg == 'W') {
-
-      digitalWrite(pir1, HIGH);
-      digitalWrite(pir2, HIGH);
-
-    }
-
-    if (msg == 'w') {
-
-      digitalWrite(pir1, LOW);
-      digitalWrite(pir2, LOW);
 
     }
 
@@ -290,18 +238,6 @@ void loop() {
 
     }
 
-    if (msg == 'H') {
-
-     clawcompress();
-
-    }
-
-    if (msg == 'J') {
-
-      clawdecompress();
-
-    }
   }
-
 
 }
