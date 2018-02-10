@@ -1,5 +1,5 @@
 #include <SoftwareSerial.h>
-SoftwareSerial bluetooth(52, 53);
+SoftwareSerial bluetooth(15, 16);
 int IN1_1 = 1; //правый задний вперед
 int IN2_1 = 2; //правый задний назад
 int IN3_1 = 4; //правый передний вперед
@@ -7,14 +7,13 @@ int IN4_1 = 7; //правый передний назад
 int IN1_2 = 8; //левый задний вперед
 int IN2_2 = 12; //левый задний назад
 int IN3_2 = 13; //левый передний вперед
-int IN4_2 = 14; //левый передний назад
+int IN4_2 = 10 ; //левый передний назад
 int i;
 int spd1_1 = 3;
 int spd2_1 = 5;
 int spd1_2 = 6;
 int spd2_2 = 9;
 char msg;
-int angle = 90;
 
 void setup() {
   //Serial.begin(115200);
@@ -76,27 +75,27 @@ void backward() {
 void left() {
 
   digitalWrite(IN1_1, HIGH);
-  digitalWrite(IN3_1, HIGH);
+  digitalWrite(IN2_1, HIGH);
   digitalWrite(IN1_2, HIGH);
-  digitalWrite(IN3_2, HIGH);
+  digitalWrite(IN2_2, HIGH);
   delay(45);
   digitalWrite(IN1_1, LOW);
-  digitalWrite(IN3_1, LOW);
+  digitalWrite(IN2_1, LOW);
   digitalWrite(IN1_2, LOW);
-  digitalWrite(IN3_2, LOW);
+  digitalWrite(IN2_2, LOW);
 
 }
 
 void right() {
 
-  digitalWrite(IN2_1, HIGH);
+  digitalWrite(IN3_1, HIGH);
   digitalWrite(IN4_1, HIGH);
-  digitalWrite(IN2_2, HIGH);
+  digitalWrite(IN3_2, HIGH);
   digitalWrite(IN4_2, HIGH);
   delay(45);
-  digitalWrite(IN2_1, LOW);
+  digitalWrite(IN3_1, LOW);
   digitalWrite(IN4_1, LOW);
-  digitalWrite(IN2_2, LOW);
+  digitalWrite(IN3_2, LOW);
   digitalWrite(IN4_2, LOW);
 
 }
