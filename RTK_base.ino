@@ -35,9 +35,9 @@ void setup() {
   digitalWrite(IN3_2, LOW);
   digitalWrite(IN4_2, LOW);
   pinMode(3, OUTPUT);
-  pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
   analogWrite(spd1_1, 100);
   analogWrite(spd1_2, 100);
   analogWrite(spd2_1, 100);
