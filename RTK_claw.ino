@@ -14,50 +14,46 @@ void setup() {
   bluetooth.begin(9600);
   pinMode(IN1_1, OUTPUT);
   pinMode(IN2_1, OUTPUT);
+  pinMode(IN3_1, OUTPUT);
+  pinMode(IN4_1, OUTPUT);
   digitalWrite(IN1_1, LOW);
   digitalWrite(IN2_1, LOW);
+  digitalWrite(IN3_1, LOW);
+  digitalWrite(IN4_1, LOW);
   pinMode(3, OUTPUT);
-  pinMode(9, OUTPUT);
+  pinMode(6, OUTPUT);
   analogWrite(spd1_1, 100);
-  analogWrite(spd2_1, 100);
+  analogWrite(spd2_1, 170);
 }
 
 void backward() {
 
-  digitalWrite(IN1_1, HIGH);
-  digitalWrite(IN3_1, HIGH);
+  digitalWrite(IN1_1, HIGH);;
   delay(45);
   digitalWrite(IN1_1, LOW);
-  digitalWrite(IN3_1, LOW);
 
 }
 
 void forward() {
 
   digitalWrite(IN2_1, HIGH);
-  digitalWrite(IN4_1, HIGH);
   delay(45);
   digitalWrite(IN2_1, LOW);
-  digitalWrite(IN4_1, LOW);
   
 }
 
 void right() {
 
-  digitalWrite(IN2_1, HIGH);
   digitalWrite(IN3_1, HIGH);
   delay(45);
-  digitalWrite(IN2_1, LOW);
   digitalWrite(IN3_1, LOW);
 
 }
 
 void left() {
-
-  digitalWrite(IN1_1, HIGH);
+  
   digitalWrite(IN4_1, HIGH);
   delay(45);
-  digitalWrite(IN1_1, LOW);
   digitalWrite(IN4_1, LOW);
   
 }
