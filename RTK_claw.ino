@@ -1,12 +1,12 @@
 #include <SoftwareSerial.h>
 SoftwareSerial bluetooth(7, 2);
-int IN1_1 = 4; //правый задний вперед
-int IN2_1 = 5; //правый задний назад
-int IN3_1 = 6; //правый передний вперед
-int IN4_1 = 8; //правый передний назад
+int IN1_1 = 4; 
+int IN2_1 = 5; 
+int IN3_1 = 6; 
+int IN4_1 = 8; 
 int i;
 int spd1_1 = 3;
-int spd2_1 = 6;
+int spd1_2 = 6;
 char msg;
 
 void setup() {
@@ -23,7 +23,7 @@ void setup() {
   pinMode(3, OUTPUT);
   pinMode(6, OUTPUT);
   analogWrite(spd1_1, 100);
-  analogWrite(spd2_1, 170);
+  analogWrite(spd1_2, 170);
 }
 
 void backward() {
@@ -89,13 +89,11 @@ void loop() {
       left();
 
     }
-/*
+
     if (msg == '0') {
 
       analogWrite(spd1_1, 0);
       analogWrite(spd1_2, 0);
-      analogWrite(spd2_1, 0);
-      analogWrite(spd2_2, 0);
 
     }
 
@@ -103,8 +101,6 @@ void loop() {
 
       analogWrite(spd1_1, 100);
       analogWrite(spd1_2, 100);
-      analogWrite(spd2_1, 100);
-      analogWrite(spd2_2, 100);
 
     }
 
@@ -112,8 +108,6 @@ void loop() {
 
       analogWrite(spd1_1, 160);
       analogWrite(spd1_2, 160);
-      analogWrite(spd2_1, 160);
-      analogWrite(spd2_2, 160);
 
     }
 
@@ -121,8 +115,6 @@ void loop() {
 
       analogWrite(spd1_1, 170);
       analogWrite(spd1_2, 170);
-      analogWrite(spd2_1, 170);
-      analogWrite(spd2_2, 170);
 
     }
 
@@ -130,8 +122,6 @@ void loop() {
 
       analogWrite(spd1_1, 180);
       analogWrite(spd1_2, 180);
-      analogWrite(spd2_1, 180);
-      analogWrite(spd2_2, 180);
 
     }
 
@@ -139,8 +129,6 @@ void loop() {
 
       analogWrite(spd1_1, 190);
       analogWrite(spd1_2, 190);
-      analogWrite(spd2_1, 190);
-      analogWrite(spd2_2, 190);
 
     }
 
@@ -148,16 +136,12 @@ void loop() {
 
       analogWrite(spd1_1, 200);
       analogWrite(spd1_2, 200);
-      analogWrite(spd2_1, 200);
-      analogWrite(spd2_2, 200);
     }
 
     if (msg == '7') {
 
       analogWrite(spd1_1, 210);
       analogWrite(spd1_2, 210);
-      analogWrite(spd2_1, 210);
-      analogWrite(spd2_2, 210);
 
     }
 
@@ -165,25 +149,23 @@ void loop() {
 
       analogWrite(spd1_1, 220);
       analogWrite(spd1_2, 220);
-      analogWrite(spd2_1, 220);
-      analogWrite(spd2_2, 220);
 
     }
 
     if (msg == '9') {
       
       analogWrite(spd1_1, 230);
-      analogWrite(spd2_1, 230);
+      analogWrite(spd1_2, 230);
 
     }
 
     if (msg == 'q') {
 
       analogWrite(spd1_1, 255);
-      analogWrite(spd2_1, 255);
+      analogWrite(spd1_2, 255);
 
     }
-*/
+
   }
 
 }
