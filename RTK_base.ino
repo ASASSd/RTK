@@ -1,13 +1,13 @@
 #include <SoftwareSerial.h>
 SoftwareSerial bluetooth(15, 16);
-int IN1_1 = 1; //правый задний вперед
-int IN2_1 = 2; //правый задний назад
-int IN3_1 = 4; //правый передний вперед
-int IN4_1 = 5; //правый передний назад
-int IN1_2 = 7; //левый задний вперед
-int IN2_2 = 8; //левый задний назад
-int IN3_2 = 12; //левый передний вперед
-int IN4_2 = 13; //левый передний назад
+int IN1_1 = 1;
+int IN2_1 = 2; 
+int IN3_1 = 4; 
+int IN4_1 = 5; 
+int IN1_2 = 7; 
+int IN2_2 = 8; 
+int IN3_2 = 12; 
+int IN4_2 = 13; 
 int i;
 int spd1_1 = 3;
 int spd2_1 = 6;
