@@ -1,18 +1,12 @@
 #include <SoftwareSerial.h>
-SoftwareSerial bluetooth(15, 16);
-int IN1_1 = 1;
-int IN2_1 = 2; 
-int IN3_1 = 4; 
-int IN4_1 = 5; 
-int IN1_2 = 7; 
-int IN2_2 = 8; 
-int IN3_2 = 12; 
-int IN4_2 = 13; 
+SoftwareSerial bluetooth(7, 2);
+int IN1_1 = 4; 
+int IN2_1 = 5; 
+int IN3_1 = 6; 
+int IN4_1 = 8; 
 int i;
 int spd1_1 = 3;
-int spd2_1 = 6;
-int spd1_2 = 10;
-int spd2_2 = 11;
+int spd1_2 = 9;
 char msg;
 
 void setup() {
@@ -22,98 +16,57 @@ void setup() {
   pinMode(IN2_1, OUTPUT);
   pinMode(IN3_1, OUTPUT);
   pinMode(IN4_1, OUTPUT);
-  pinMode(IN1_2, OUTPUT);
-  pinMode(IN2_2, OUTPUT);
-  pinMode(IN3_2, OUTPUT);
-  pinMode(IN4_2, OUTPUT);
   digitalWrite(IN1_1, LOW);
   digitalWrite(IN2_1, LOW);
   digitalWrite(IN3_1, LOW);
   digitalWrite(IN4_1, LOW);
-  digitalWrite(IN1_2, LOW);
-  digitalWrite(IN2_2, LOW);
-  digitalWrite(IN3_2, LOW);
-  digitalWrite(IN4_2, LOW);
   pinMode(3, OUTPUT);
-  pinMode(6, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
+  pinMode(9, OUTPUT);
   analogWrite(spd1_1, 100);
-  analogWrite(spd1_2, 100);
-  analogWrite(spd2_1, 100);
-  analogWrite(spd2_2, 100);
+  analogWrite(spd1_2, 170);
 }
 
 void backward() {
 
-  digitalWrite(IN1_1, HIGH);
-  digitalWrite(IN3_1, HIGH);
-  digitalWrite(IN1_2, HIGH);
-  digitalWrite(IN4_2, HIGH);
+  digitalWrite(IN1_1, HIGH);;
   delay(45);
   digitalWrite(IN1_1, LOW);
-  digitalWrite(IN3_1, LOW);
-  digitalWrite(IN1_2, LOW);
-  digitalWrite(IN4_2, LOW);
 
 }
 
 void forward() {
 
   digitalWrite(IN2_1, HIGH);
-  digitalWrite(IN4_1, HIGH);
-  digitalWrite(IN2_2, HIGH);
-  digitalWrite(IN3_2, HIGH);
   delay(45);
   digitalWrite(IN2_1, LOW);
-  digitalWrite(IN4_1, LOW);
-  digitalWrite(IN2_2, LOW);
-  digitalWrite(IN3_2, LOW);
-
+  
 }
 
 void right() {
 
-  digitalWrite(IN1_1, HIGH);
-  digitalWrite(IN4_1, HIGH);
-  digitalWrite(IN1_2, HIGH);
-  digitalWrite(IN3_2, HIGH);
+  digitalWrite(IN3_1, HIGH);
   delay(45);
-  digitalWrite(IN1_1, LOW);
-  digitalWrite(IN4_1, LOW);
-  digitalWrite(IN1_2, LOW);
-  digitalWrite(IN3_2, LOW);
+  digitalWrite(IN3_1, LOW);
 
 }
 
 void left() {
-
-  digitalWrite(IN2_1, HIGH);
-  digitalWrite(IN3_1, HIGH);
-  digitalWrite(IN2_2, HIGH);
-  digitalWrite(IN4_2, HIGH);
+  
+  digitalWrite(IN4_1, HIGH);
   delay(45);
-  digitalWrite(IN2_1, LOW);
-  digitalWrite(IN3_1, LOW);
-  digitalWrite(IN2_2, LOW);
-  digitalWrite(IN4_2, LOW);
-
+  digitalWrite(IN4_1, LOW);
+  
 }
 
 void loop() {
 
   if (bluetooth.available()) {
-
     msg = (char)bluetooth.read();
     //Serial.println(msg);
     digitalWrite(IN1_1, LOW);
     digitalWrite(IN2_1, LOW);
     digitalWrite(IN3_1, LOW);
     digitalWrite(IN4_1, LOW);
-    digitalWrite(IN1_2, LOW);
-    digitalWrite(IN2_2, LOW);
-    digitalWrite(IN3_2, LOW);
-    digitalWrite(IN4_2, LOW);
     delay(1);
     if (msg == 'F') {
 
@@ -126,16 +79,14 @@ void loop() {
       backward();
 
     }
-
-    if (msg == 'L') {
-
-      left();
-
-    }
-
-    if (msg == 'R') {
+     if (msg == 'R') {
 
       right();
+
+    }
+     if (msg == 'L') {
+
+      left();
 
     }
 
@@ -143,8 +94,6 @@ void loop() {
 
       analogWrite(spd1_1, 0);
       analogWrite(spd1_2, 0);
-      analogWrite(spd2_1, 0);
-      analogWrite(spd2_2, 0);
 
     }
 
@@ -152,8 +101,6 @@ void loop() {
 
       analogWrite(spd1_1, 100);
       analogWrite(spd1_2, 100);
-      analogWrite(spd2_1, 100);
-      analogWrite(spd2_2, 100);
 
     }
 
@@ -161,8 +108,6 @@ void loop() {
 
       analogWrite(spd1_1, 160);
       analogWrite(spd1_2, 160);
-      analogWrite(spd2_1, 160);
-      analogWrite(spd2_2, 160);
 
     }
 
@@ -170,8 +115,6 @@ void loop() {
 
       analogWrite(spd1_1, 170);
       analogWrite(spd1_2, 170);
-      analogWrite(spd2_1, 170);
-      analogWrite(spd2_2, 170);
 
     }
 
@@ -179,8 +122,6 @@ void loop() {
 
       analogWrite(spd1_1, 180);
       analogWrite(spd1_2, 180);
-      analogWrite(spd2_1, 180);
-      analogWrite(spd2_2, 180);
 
     }
 
@@ -188,8 +129,6 @@ void loop() {
 
       analogWrite(spd1_1, 190);
       analogWrite(spd1_2, 190);
-      analogWrite(spd2_1, 190);
-      analogWrite(spd2_2, 190);
 
     }
 
@@ -197,16 +136,12 @@ void loop() {
 
       analogWrite(spd1_1, 200);
       analogWrite(spd1_2, 200);
-      analogWrite(spd2_1, 200);
-      analogWrite(spd2_2, 200);
     }
 
     if (msg == '7') {
 
       analogWrite(spd1_1, 210);
       analogWrite(spd1_2, 210);
-      analogWrite(spd2_1, 210);
-      analogWrite(spd2_2, 210);
 
     }
 
@@ -214,17 +149,13 @@ void loop() {
 
       analogWrite(spd1_1, 220);
       analogWrite(spd1_2, 220);
-      analogWrite(spd2_1, 220);
-      analogWrite(spd2_2, 220);
 
     }
 
     if (msg == '9') {
-
+      
       analogWrite(spd1_1, 230);
       analogWrite(spd1_2, 230);
-      analogWrite(spd2_1, 230);
-      analogWrite(spd2_2, 230);
 
     }
 
@@ -232,8 +163,6 @@ void loop() {
 
       analogWrite(spd1_1, 255);
       analogWrite(spd1_2, 255);
-      analogWrite(spd2_1, 255);
-      analogWrite(spd2_2, 255);
 
     }
 
