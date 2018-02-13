@@ -14,7 +14,10 @@ int spd2_1 = 6;
 int spd1_2 = 10;
 int spd2_2 = 11;
 char msg;
-
+int sensL = 17;
+int sensR = 18;
+int valL, valR;
+boolean isAuto = false;
 void setup() {
   //Serial.begin(115200);
   bluetooth.begin(9600);
@@ -42,6 +45,8 @@ void setup() {
   analogWrite(spd1_2, 100);
   analogWrite(spd2_1, 100);
   analogWrite(spd2_2, 100);
+  pinMode(sensL, INPUT);
+  pinMode(sensR, INPUT);
 }
 
 void backward() {
@@ -100,12 +105,8 @@ void left() {
 
 }
 
-void loop() {
+void stay(){
 
-  if (bluetooth.available()) {
-
-    msg = (char)bluetooth.read();
-    //Serial.println(msg);
     digitalWrite(IN1_1, LOW);
     digitalWrite(IN2_1, LOW);
     digitalWrite(IN3_1, LOW);
@@ -114,6 +115,18 @@ void loop() {
     digitalWrite(IN2_2, LOW);
     digitalWrite(IN3_2, LOW);
     digitalWrite(IN4_2, LOW);
+    delay(45);
+  
+}
+
+void loop() {
+  valL = digitalRead(sensL);
+  valR = digitalRead(sensR);
+  if (bluetooth.available()) {
+
+    msg = (char)bluetooth.read();
+    //Serial.println(msg);
+   
     delay(1);
     if (msg == 'F') {
 
@@ -236,6 +249,47 @@ void loop() {
       analogWrite(spd2_2, 255);
 
     }
+
+    if (msg == 'W') {
+
+    isAuto = true;
+
+    }
+    if (msg == 'w') {
+
+    isAuto = false;
+
+    }
+    if (isAuto == true) {
+
+     forward();
+    if(valR == 1 && valL == 1){
+      if(valR < valL){
+        right();
+        delay(100);
+        stay(); 
+      }
+      if(valR > valL){
+        left();
+        delay(100);
+        stay();
+      } 
+    }
+    if(valR == 0 && valL == 0){
+     if(valR > valL){
+        right();
+        delay(100);
+        stay(); 
+      }
+      if(valR < valL){
+        left();
+        delay(100);
+        stay();
+      }  
+    }
+    
+    }
+
 
   }
 
