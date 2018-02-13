@@ -263,6 +263,10 @@ void loop() {
     if (isAuto == true) {
 
      forward();
+     analogWrite(spd1_1, 100);
+     analogWrite(spd1_2, 100);
+     analogWrite(spd2_1, 100);
+     analogWrite(spd2_2, 100);
     if(valR == 1 && valL == 1){
       if(valR < valL){
         right();
