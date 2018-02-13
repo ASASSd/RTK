@@ -6,7 +6,7 @@ int IN3_1 = 6;
 int IN4_1 = 8; 
 int i;
 int spd1_1 = 3;
-int spd1_2 = 6;
+int spd1_2 = 9;
 char msg;
 
 void setup() {
@@ -21,7 +21,7 @@ void setup() {
   digitalWrite(IN3_1, LOW);
   digitalWrite(IN4_1, LOW);
   pinMode(3, OUTPUT);
-  pinMode(6, OUTPUT);
+  pinMode(9, OUTPUT);
   analogWrite(spd1_1, 100);
   analogWrite(spd1_2, 170);
 }
