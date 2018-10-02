@@ -62,7 +62,8 @@ void loop() {
 
   if (bluetooth.available()) {
     msg = (char)bluetooth.read();
-    //Serial.println(msg);
+    //Serial.print("message=");
+    // L-Serial.println(msg);
     digitalWrite(IN1_1, LOW);
     digitalWrite(IN2_1, LOW);
     digitalWrite(IN3_1, LOW);
@@ -82,12 +83,12 @@ void loop() {
      if (msg == 'R') {
 
       right();
-
+      //Serial.println("Right trigger");
     }
      if (msg == 'L') {
 
       left();
-
+      //Serial.println("Left trigger");
     }
 
     if (msg == '0') {
